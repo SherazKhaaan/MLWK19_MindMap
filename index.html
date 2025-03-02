@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reinforcement Learning I Mind Map</title>
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .mindmap {
+      position: relative;
+      width: 1400px;
+      height: 1200px;
+      margin: 20px 0;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .node {
+      position: absolute;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-weight: bold;
+    }
+    .node:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    /* Colors */
+    .red {
+      background-color: #ffcccc;
+      border: 2px solid #e60000;
+      color: #990000;
+    }
+    .blue {
+      background-color: #cce5ff;
+      border: 2px solid #0066cc;
+      color: #004080;
+    }
+    .green {
+      background-color: #ccffcc;
+      border: 2px solid #00cc00;
+      color: #006600;
+      font-weight: normal;
+    }
+    /* Info panel styles */
+    #infoPanel {
+      width: 1400px;
+      min-height: 150px;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .infoTitle {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .infoContent {
+      line-height: 1.5;
+    }
+    /* Legend styles */
+    .legend {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .legendItem {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legendBox {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+    line {
+      stroke: #999;
+      stroke-width: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reinforcement Learning I</h1>
+    
+    <div class="mindmap" id="mindmap">
+      <!-- SVG for connecting lines -->
+      <svg width="1400" height="1200" style="position: absolute; top: 0; left: 0;">
+        <!-- Lines from central red node (center at ~ (700,600)) to Blue Nodes -->
+        <line x1="700" y1="600" x2="100" y2="100" />     <!-- Blue Node 1: What is RL? -->
+        <line x1="700" y1="600" x2="1200" y2="100" />    <!-- Blue Node 2: Markov Decision Processes -->
+        <line x1="700" y1="600" x2="700" y2="1100" />     <!-- Blue Node 3: Methods to Solve MDPs -->
+        
+        <!-- Blue Node 1 (What is RL?) to its Green Nodes -->
+        <line x1="100" y1="100" x2="100" y2="300" />      <!-- RL Definition -->
+        <line x1="100" y1="100" x2="100" y2="370" />      <!-- Agent & Environment -->
+        <line x1="100" y1="100" x2="100" y2="440" />      <!-- Applications -->
+        
+        <!-- Blue Node 2 (MDPs) to its Green Nodes -->
+        <line x1="1200" y1="100" x2="1200" y2="300" />    <!-- States & Transitions -->
+        <line x1="1200" y1="100" x2="1200" y2="370" />    <!-- Reward Function -->
+        <line x1="1200" y1="100" x2="1200" y2="440" />    <!-- Probabilistic Outcomes -->
+        
+        <!-- Blue Node 3 (Solving MDPs) to its Green Nodes -->
+        <line x1="700" y1="1100" x2="700" y2="1170" />    <!-- Value Iteration -->
+        <line x1="700" y1="1100" x2="700" y2="1230" />    <!-- Policy Iteration -->
+        <line x1="700" y1="1100" x2="700" y2="1290" />    <!-- Bellman Equation -->
+      </svg>
+      
+      <!-- Central Red Node -->
+      <div class="node red" style="width: 250px; top: 550px; left: 600px;" 
+           onclick="showInfo('Reinforcement Learning I', 
+           '&lt;ul&gt;&lt;li&gt;RL is a paradigm where an agent learns a policy \\(\\pi(a|s)\\) to maximize its cumulative discounted rewards \\( G = \\sum_{t=0}^\\infty \\gamma^t R(s_t) \\).&lt;/li&gt;&lt;li&gt;The agent interacts with an environment by taking actions, transitioning to new states, and receiving rewards.&lt;/li&gt;&lt;/ul&gt;')">
+        Reinforcement Learning I
+      </div>
+      
+      <!-- Blue Node 1: What is RL? -->
+      <div class="node blue" style="width: 250px; top: 20px; left: 50px;" 
+           onclick="showInfo('What is RL?', 
+           '&lt;ul&gt;&lt;li&gt;RL involves an agent that learns by interacting with an environment.&lt;/li&gt;&lt;li&gt;Key elements: state \\(s_t\\), action \\(a_t\\), reward \\(r_{t+1}\\), and next state \\(s_{t+1}\\).&lt;/li&gt;&lt;/ul&gt;')">
+        What is RL?
+      </div>
+      <!-- Green Nodes for What is RL? -->
+      <div class="node green" style="width: 220px; top: 300px; left: 50px;" 
+           onclick="showInfo('RL Definition', 
+           '&lt;ul&gt;&lt;li&gt;Return: \\( G = \\sum_{t=0}^{\\infty} \\gamma^t R(s_t) \\), where \\( 0 \\leq \\gamma < 1 \\).&lt;/li&gt;&lt;/ul&gt;')">
+        RL Definition
+      </div>
+      <div class="node green" style="width: 220px; top: 370px; left: 50px;" 
+           onclick="showInfo('Agent &amp; Environment', 
+           '&lt;ul&gt;&lt;li&gt;The agent selects actions based on a policy \\( \\pi(a|s) \\).&lt;/li&gt;&lt;li&gt;The environment returns a new state and reward after each action.&lt;/li&gt;&lt;/ul&gt;')">
+        Agent &amp; Environment
+      </div>
+      <div class="node green" style="width: 220px; top: 440px; left: 50px;" 
+           onclick="showInfo('Applications', 
+           '&lt;ul&gt;&lt;li&gt;Examples: Pacman, chess, robotics, game playing, finance, and more.&lt;/li&gt;&lt;/ul&gt;')">
+        Applications
+      </div>
+      
+      <!-- Blue Node 2: Markov Decision Processes -->
+      <div class="node blue" style="width: 250px; top: 20px; left: 1100px;" 
+           onclick="showInfo('Markov Decision Processes', 
+           '&lt;ul&gt;&lt;li&gt;An MDP is defined by states \\(S\\), actions \\(A\\), transition probabilities \\(T(s\'|s,a)\\), and a reward function \\(R(s)\\).&lt;/li&gt;&lt;li&gt;The next state is sampled according to \\( P(s\'|s,a) \\).&lt;/li&gt;&lt;/ul&gt;')">
+        Markov Decision Processes
+      </div>
+      <!-- Green Nodes for MDPs -->
+      <div class="node green" style="width: 220px; top: 300px; left: 1100px;" 
+           onclick="showInfo('States &amp; Transitions', 
+           '&lt;ul&gt;&lt;li&gt;The state space \\(S\\) includes all possible configurations (e.g., grid cells).&lt;/li&gt;&lt;/ul&gt;')">
+        States &amp; Transitions
+      </div>
+      <div class="node green" style="width: 220px; top: 370px; left: 1100px;" 
+           onclick="showInfo('Reward Function', 
+           '&lt;ul&gt;&lt;li&gt;The reward function \\(R(s)\\) assigns a numeric value to each state (e.g., \\( R(s)=1 \\) for a goal state, \\( R(s)=-1 \\) for a bomb).&lt;/li&gt;&lt;/ul&gt;')">
+        Reward Function
+      </div>
+      <div class="node green" style="width: 220px; top: 440px; left: 1100px;" 
+           onclick="showInfo('Probabilistic Outcomes', 
+           '&lt;ul&gt;&lt;li&gt;Actions yield probabilistic outcomes. Example: Moving up may succeed with 80% probability, or fail (10% left, 10% right).&lt;/li&gt;&lt;/ul&gt;')">
+        Probabilistic Outcomes
+      </div>
+      
+      <!-- Blue Node 3: Methods to Exactly Solve MDPs -->
+      <div class="node blue" style="width: 300px; top: 900px; left: 550px;" 
+           onclick="showInfo('Methods to Exactly Solve MDPs', 
+           '&lt;ul&gt;&lt;li&gt;Optimal policies maximize the expected discounted return.&lt;/li&gt;&lt;li&gt;Key methods include Value Iteration and Policy Iteration.&lt;/li&gt;&lt;/ul&gt;')">
+        Methods to Exactly Solve MDPs
+      </div>
+      <!-- Green Nodes for Methods -->
+      <div class="node green" style="width: 220px; top: 980px; left: 550px;" 
+           onclick="showInfo('Value Iteration', 
+           '&lt;ul&gt;&lt;li&gt;Update rule: \\( U_{new}(s) = R(s) + \\gamma \\max_a \\sum_{s'} T(s\'|s,a) U(s') \\).&lt;/li&gt;&lt;li&gt;Iterate until \\( ||U_{new} - U|| \\le \\epsilon \\).&lt;/li&gt;&lt;/ul&gt;')">
+        Value Iteration
+      </div>
+      <div class="node green" style="width: 220px; top: 1040px; left: 550px;" 
+           onclick="showInfo('Policy Iteration', 
+           '&lt;ul&gt;&lt;li&gt;Alternate between policy evaluation (compute \\( U^\\pi(s) \\)) and policy improvement: \\( \\pi(s)=\\arg\\max_a \\sum_{s'}T(s\'|s,a)U^\\pi(s') \\).&lt;/li&gt;&lt;/ul&gt;')">
+        Policy Iteration
+      </div>
+      <div class="node green" style="width: 220px; top: 1100px; left: 550px;" 
+           onclick="showInfo('Bellman Equation', 
+           '&lt;ul&gt;&lt;li&gt;Recursive formula: \\( U(s)=R(s)+\\gamma \\max_a \\sum_{s'} T(s\'|s,a) U(s') \\).&lt;/li&gt;&lt;/ul&gt;')">
+        Bellman Equation
+      </div>
+    </div>
+    
+    <!-- Information Panel -->
+    <div id="infoPanel">
+      <div class="infoTitle" id="infoTitle">Click on a concept to see details</div>
+      <div class="infoContent" id="infoContent">
+        Select any node in the mind map to display detailed information.
+      </div>
+    </div>
+    
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legendItem">
+        <div class="legendBox red"></div>
+        <span>Big Picture Concepts</span>
+      </div>
+      <div class="legendItem">
+        <div class="legendBox blue"></div>
+        <span>Major Categories</span>
+      </div>
+      <div class="legendItem">
+        <div class="legendBox green"></div>
+        <span>Details &amp; Equations</span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function showInfo(title, content) {
+      document.getElementById("infoPanel").style.display = "block";
+      document.getElementById("infoTitle").textContent = title;
+      document.getElementById("infoContent").innerHTML = content;
+      MathJax.typesetPromise(); // re-render equations
+    }
+  </script>
+</body>
+</html>
